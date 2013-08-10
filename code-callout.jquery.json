@@ -1,0 +1,24 @@
+{
+	"name": "code-callout",
+	"version": "0.1.0",
+	"title": "Code Callout",
+	"author": {
+		"name": "Dave Leeds",
+		"url": "http://www.hitthebits.com"
+	},
+	"licenses": [{
+		"type": "MIT",
+		"url": "https://raw.github.com/djleeds/code-callout/master/LICENSE.md"
+	}],
+  "dependencies": {
+    "jquery": ">=1.7"
+  },
+	"description": "Code Callout allows you to create links in your webpages to highlight and comment on a Gist embedded in the page. When you click a link, the page scrolls to the indicated lines, highlights them, and pops up a note. When you're done examining the code, you click a button to continue reading where you left off.",
+	"keywords": [
+		"code",
+		"callout",
+		"note",
+		"highlight"
+	],
+	"bugs": "https://github.com/djleeds/code-callout/issues"
+}
