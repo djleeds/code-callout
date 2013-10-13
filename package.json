@@ -1,0 +1,14 @@
+{
+  "name": "code-callout",
+  "version": "0.1.0",
+  "repository": {
+  		"type": "git",
+  		"url": "https://github.com/djleeds/code-callout.git"
+  	},
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-contrib-jshint": "~0.6.3",
+    "grunt-jasmine-node": "~0.1.0",
+    "grunt-contrib-uglify": "~0.2.4"
+  }
+}

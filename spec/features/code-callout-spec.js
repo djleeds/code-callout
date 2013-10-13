@@ -1,10 +1,9 @@
-require("./spec-setup");
+require("../spec-setup");
 
 (function($, undefined) {
 	"use strict";
 
-	var fixtureFilePath = require("path").resolve(__dirname, "gist-fixture.html");
-	var html = require("fs").readFileSync(fixtureFilePath, "utf-8");
+	var html = getHtmlFromFile("gist-fixture.html");
 
 	describe("Code callouts", function() {
 
@@ -138,5 +137,28 @@ require("./spec-setup");
 
 		});
 
+		describe("exposeForTest", function() {
+
+			it("exposes internals", function() {
+				initializePlugin();
+
+				var internals = window.__codeCallout;
+
+				expect(internals).toBeDefined();
+				expect(internals.Callout).toBeDefined();
+				expect(internals.NullCallout).toBeDefined();
+				expect(internals.Note).toBeDefined();
+				expect(internals.Listing).toBeDefined();
+				expect(internals.LineSet).toBeDefined();
+				expect(internals.Scroller).toBeDefined();
+				expect(internals.Style).toBeDefined();
+				expect(internals.LineNumberParser).toBeDefined();
+				expect(internals.TriggerReader).toBeDefined();
+				expect(internals.CalloutFactory).toBeDefined();
+				expect(internals.NoteFactory).toBeDefined();
+				expect(internals.ListingFactory).toBeDefined();
+				expect(internals.LineSetFactory).toBeDefined();
+			});
+		});
 	});
 })(jQuery);

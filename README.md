@@ -3,7 +3,7 @@
 **Code Callout** is a [jQuery](http://jquery.com) plugin that allows you to create links
 in your webpages to highlight and comment on a block of code in the page.  When you click a link, the page scrolls to the indicated lines, highlights them, and pops up a note.  When you're done examining the code, you click the "continue reading" button, and you'll scroll back to the text.
 
-Right now, it works with embedded [Gists](https://gist.github.com), although you might be 
+Right now, it works with embedded [Gists](https://gist.github.com), although you might be
 able to get it to work with other types of code listings with some configuration changes.
 
 ## How It Works
@@ -26,10 +26,10 @@ Here's a snippet of HTML demonstrating how you can create a callout.  Naturally,
 
 <!-- Here's where we write commentary about the code listing above. -->
 <p>
-    This is a code listing for a Square class. Notice how we 
+    This is a code listing for a Square class. Notice how we
     <!-- Here's the trigger link. We'll give it a class name that we use in the call to the plugin below. -->
     <a class="callout-trigger"
-        data-file="listing-1"
+        data-listing="listing-1"
         data-lines="3,5-7"
         data-note="The member variable is private but we provide a setter."
         >provide a setter</a>
@@ -46,7 +46,7 @@ Here's a snippet of HTML demonstrating how you can create a callout.  Naturally,
 
 Triggers are links that initiate a code callout.  Be sure to add a class name to them so that you can easily send them to the jQuery plugin.  Here are the attributes that you must specify.
 
-1. ``data-file`` - The id of the code listing.  Make sure you wrap the Gist's ``<script>`` tag with an element that has an id attribute on it.  This is required, because Code Callout allows you to have multiple code listings on a single page.
+1. ``data-listing`` - The id of the code listing.  Make sure you wrap the Gist's ``<script>`` tag with an element that has an id attribute on it.  This is required, because Code Callout allows you to have multiple code listings on a single page.
 2. ``data-lines`` - The line numbers in the code listing that you want to highlight. This can include:
     - A single line number, such as ``3``
     - A line range, such as ``5-7``
