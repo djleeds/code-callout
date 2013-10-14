@@ -1,0 +1,80 @@
+<html>
+<head>
+    <link type="text/css" rel="stylesheet" href="/bower_components/SyntaxHighlighter/styles/shCore.css"/>
+    <link type="text/css" rel="Stylesheet" href="/bower_components/SyntaxHighlighter/styles/shThemeDefault.css" />
+
+    <script type="text/javascript" src="/bower_components/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="/lib/jquery.code-callout.js"></script>
+
+    <script type="text/javascript" src="/bower_components/SyntaxHighlighter/scripts/XRegExp.js"></script>
+    <script type="text/javascript" src="/bower_components/SyntaxHighlighter/scripts/shCore.js"></script>
+    <script type="text/javascript" src="/bower_components/SyntaxHighlighter/scripts/shAutoloader.js"></script>
+    <script type="text/javascript" src="/bower_components/SyntaxHighlighter/scripts/shBrushJava.js"></script>
+</head>
+
+<body>
+
+<p style="height: 500px">This is an example code block</p>
+
+<div id="code-sample-1">
+<pre class="brush:java">
+class PhysicsBody
+{
+    float Mass { get; set; }
+    Vector2 Position { get; set; }
+    Vector2 Velocity { get; set; }
+    Vector2 TotalForce { get; set; }
+    float MaximumVelocity { get; set; }
+
+    // Constructor elided...
+
+    public void OnTick(float elapsedMilliseconds)
+    {
+        float elapsedSeconds = elapsedMilliseconds / 1000.0f;
+
+        Velocity += elapsedSeconds * (TotalForce / Mass);
+        if (Velocity.Length() > MaximumVelocity)
+        {
+            var direction = Vector2.Normalize(Velocity);
+            Velocity = direction * MaximumVelocity;
+        }
+
+        Position += elapsedSeconds * Velocity;
+    }
+}
+</pre>
+</div>
+
+<style type="text/css">
+    a { display:block; margin-top: 500px; }
+</style>
+
+<a
+    id="line-1-trigger"
+    class="code-callout"
+    data-listing="code-sample-1"
+    data-lines="1"
+    data-note="This is a simple code callout for line 1"
+>Line 1</a>
+
+<a
+    id="line-4-trigger"
+    class="code-callout"
+    data-listing="code-sample-1"
+    data-lines="4"
+    data-note="This is a simple code callout for line 4"
+>Line 4</a>
+
+<a
+    id="multi-line-trigger"
+    class="code-callout"
+    data-listing="code-sample-1"
+    data-lines="1-3,5"
+    data-note="This is a simple code callout for lines 1-3,5"
+>Lines 1-3,5</a>
+
+<script>
+    SyntaxHighlighter.all();
+</script>
+
+</body></html>

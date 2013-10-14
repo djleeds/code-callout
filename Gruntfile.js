@@ -9,9 +9,22 @@ module.exports = function(grunt) {
 				"spec/**/*.js"
 			]
 		},
-		jasmine_node: {
-			verbose: false,
-			forceExit: true
+		testem: {
+			tests: {
+				src: [
+					"bower_components/jquery/dist/jquery.min.js",
+					"bower_components/jasmine-jquery/lib/jasmine-jquery.js",
+					"lib/*.js",
+					"spec/spec-setup.js",
+					"spec/models/*.js",
+					"spec/features/*.js"
+				],
+				options: {
+					framework: "jasmine2",
+					launch_in_ci: [ "PhantomJS" ],
+					launch_in_dev: [ "PhantomJS"]
+				}
+			}
 		},
 		uglify: {
 			options: {
@@ -26,13 +39,10 @@ module.exports = function(grunt) {
 	});
 
 	grunt.loadNpmTasks("grunt-contrib-jshint");
-	grunt.loadNpmTasks("grunt-jasmine-node");
+	grunt.loadNpmTasks("grunt-contrib-testem");
 	grunt.loadNpmTasks("grunt-contrib-uglify");
 
-	grunt.registerTask('default', ['jshint', 'jasmine_node']);
-	grunt.registerTask("build", function() {
-		process.env.TARGET_CODE_FILE = "dist/jquery.code-callout.min";
-		grunt.task.run("uglify", "jasmine_node");
-	});
+	grunt.registerTask("default", ["jshint", "testem:ci:tests"]);
+	grunt.registerTask("build", ["uglify", "testem:ci:tests"]);
 
 };

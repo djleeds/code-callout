@@ -1,5 +1,3 @@
-require("../spec-setup");
-
 (function($, undefined){
 	"use strict";
 
@@ -20,19 +18,19 @@ require("../spec-setup");
 
 		it("renders contents", function() {
 			var $content = factory.renderContent(noteText);
-			expect($content).toBe("div." + contentClass);
+			expect($content).toBeMatchedBy("div." + contentClass);
 			expect($content.text()).toEqual(noteText);
 		});
 
 		it("renders a close button", function() {
 			var $button = factory.renderCloseButton();
-			expect($button).toBe("button." + buttonClass);
+			expect($button).toBeMatchedBy("button." + buttonClass);
 			expect($button.text()).toEqual(buttonText);
 		});
 
 		it("renders a note", function() {
 			var $note = factory.render(noteText);
-			expect($note).toBe("div#" + noteId);
+			expect($note).toBeMatchedBy("div#" + noteId);
 			expect($note.text()).toMatch(noteText);
 			expect($note.text()).toMatch(buttonText);
 		});

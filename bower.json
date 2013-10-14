@@ -1,0 +1,28 @@
+{
+  "name": "code-callout",
+  "version": "0.3.0",
+  "authors": [
+    "Dave Leeds <dave@hitthebits.com>"
+  ],
+  "description": "Code Callout allows you to create links in your webpages to highlight and comment on a source code listing in the page. When you click a link, the page scrolls to the indicated lines, highlights them, and pops up a note. When you're done examining the code, you click a button to continue reading where you left off.",
+  "main": "dist/jquery.code-callout.min.js",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "jquery": ">=1.7"
+  },
+  "devDependencies": {
+    "jasmine-jquery": "~2",
+    "prism": "#gh-pages",
+    "SyntaxHighlighter": "~3",
+    "jquery-syntax": "https://github.com/ioquatix/jquery-syntax.git#3.0"
+  },
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "spec",
+    "Gruntfile.js",
+    "code-callout.jquery.json"
+  ]
+}

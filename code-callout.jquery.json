@@ -1,6 +1,6 @@
 {
 	"name": "code-callout",
-	"version": "0.2.0",
+	"version": "0.3.0",
 	"title": "Code Callout",
 	"author": {
 		"name": "Dave Leeds",
@@ -14,7 +14,7 @@
 	"dependencies": {
 		"jquery": ">=1.7"
 	},
-	"description": "Code Callout allows you to create links in your webpages to highlight and comment on a Gist embedded in the page. When you click a link, the page scrolls to the indicated lines, highlights them, and pops up a note. When you're done examining the code, you click a button to continue reading where you left off.",
+	"description": "Code Callout allows you to create links in your webpages to highlight and comment on a source code listing in the page. When you click a link, the page scrolls to the indicated lines, highlights them, and pops up a note. When you're done examining the code, you click a button to continue reading where you left off.",
 	"keywords": [
 		"code",
 		"callout",

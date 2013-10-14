@@ -1,5 +1,3 @@
-require("../spec-setup");
-
 (function($, undefined) {
 	"use strict";
 
@@ -16,19 +14,19 @@ require("../spec-setup");
 			mockNote = {
 				activate: jasmine.createSpy("activate"),
 				deactivate: jasmine.createSpy("deactivate"),
-				bottom: jasmine.createSpy("bottom").andReturn(810),
+				bottom: jasmine.createSpy("bottom").and.returnValue(810),
 				onClose: jasmine.createSpy("onClose")
 			};
 			mockListing = {
 				top: jasmine.createSpy("top"),
-				bottom: jasmine.createSpy("bottom").andReturn(800),
-				center: jasmine.createSpy("center").andReturn(500),
-				height: jasmine.createSpy("height").andReturn(600)
+				bottom: jasmine.createSpy("bottom").and.returnValue(800),
+				center: jasmine.createSpy("center").and.returnValue(500),
+				height: jasmine.createSpy("height").and.returnValue(600)
 			};
 			mockLineSet = {
 				highlight: jasmine.createSpy("highlight"),
 				unhighlight: jasmine.createSpy("unhighlight"),
-				top: jasmine.createSpy("top").andReturn(20)
+				top: jasmine.createSpy("top").and.returnValue(20)
 			};
 			mockScroller = { to: jasmine.createSpy("to") };
 			callout = new Callout(mockNote, mockListing, mockLineSet, mockScroller, readingPosition, mockWindow);
@@ -49,7 +47,7 @@ require("../spec-setup");
 
 		it("deactivates when the note is closed", function() {
 			callout.deactivate = jasmine.createSpy("deactivate");
-			mockNote.onClose.mostRecentCall.args[0]();
+			mockNote.onClose.calls.mostRecent().args[0]();
 			expect(callout.deactivate).toHaveBeenCalled();
 		});
 
@@ -68,7 +66,7 @@ require("../spec-setup");
 			var calculator;
 
 			beforeEach(function() {
-				callout.center = jasmine.createSpy("center").andReturn(700);
+				callout.center = jasmine.createSpy("center").and.returnValue(700);
 				calculator = callout.positionCalculator;
 			});
 

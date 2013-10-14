@@ -1,5 +1,3 @@
-require("../spec-setup");
-
 (function($, undefined) {
 	"use strict";
 
@@ -7,8 +5,8 @@ require("../spec-setup");
 	var Listing = getClass("Listing");
 
 	var $code = {
-		offset: jasmine.createSpy("offset").andReturn({ top: 20 }),
-		outerHeight: jasmine.createSpy("outerHeight").andReturn(30)
+		offset: jasmine.createSpy("offset").and.returnValue({ top: 20 }),
+		outerHeight: jasmine.createSpy("outerHeight").and.returnValue(30)
 	};
 
 	var listing = new Listing($code);

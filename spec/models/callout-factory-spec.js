@@ -1,5 +1,3 @@
-require("../spec-setup");
-
 (function($, undefined){
 	"use strict";
 
@@ -10,9 +8,9 @@ require("../spec-setup");
 	var lineSet = jasmine.createSpyObj("lineSet", ["highlight", "top", "bottom", "left", "lineHeight"]);
 	var listing = jasmine.createSpyObj("listing", ["center", "height", "bottom"]);
 
-	var noteFactory = { create: jasmine.createSpy("noteFactory.create").andReturn(note) };
-	var listingFactory = { create: jasmine.createSpy("listingFactory.create").andReturn(listing) };
-	var lineSetFactory = { create: jasmine.createSpy("lineSetFactory.create").andReturn(lineSet) };
+	var noteFactory = { create: jasmine.createSpy("noteFactory.create").and.returnValue(note) };
+	var listingFactory = { create: jasmine.createSpy("listingFactory.create").and.returnValue(listing) };
+	var lineSetFactory = { create: jasmine.createSpy("lineSetFactory.create").and.returnValue(lineSet) };
 
 	var scroller = jasmine.createSpyObj("scroller", ["to"]);
 	var noteOffsetFromLine = 1.25;
@@ -46,9 +44,9 @@ require("../spec-setup");
 		});
 
 		it("creates position advice", function() {
-			lineSet.bottom.andReturn(50);
-			lineSet.left.andReturn(15);
-			lineSet.lineHeight.andReturn(10);
+			lineSet.bottom.and.returnValue(50);
+			lineSet.left.and.returnValue(15);
+			lineSet.lineHeight.and.returnValue(10);
 
 			var advice = factory.createPositionAdvice(lineSet);
 			var expectedOffset = noteOffsetFromLine * lineSet.lineHeight();

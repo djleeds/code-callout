@@ -1,5 +1,3 @@
-require("../spec-setup");
-
 (function($, undefined) {
 	"use strict";
 
@@ -45,18 +43,18 @@ require("../spec-setup");
 
 			beforeEach(function() {
 				$selectedLines = {
-					first: jasmine.createSpy("first").andReturn({
-						offset: jasmine.createSpy("offset").andReturn({
+					first: jasmine.createSpy("first").and.returnValue({
+						offset: jasmine.createSpy("offset").and.returnValue({
 							top: 30,
 							left: 10
 						})
 					}),
-					last: jasmine.createSpy("last").andReturn({
-						offset: jasmine.createSpy("offset").andReturn({
+					last: jasmine.createSpy("last").and.returnValue({
+						offset: jasmine.createSpy("offset").and.returnValue({
 							top: 100,
 							left: 10
 						}),
-						outerHeight: jasmine.createSpy("outerHeight").andReturn(50)
+						outerHeight: jasmine.createSpy("outerHeight").and.returnValue(50)
 					})
 				};
 				lineSet = new LineSet($selectedLines, highlightedClass);

@@ -1,5 +1,3 @@
-require("../spec-setup");
-
 (function($, undefined) {
 	"use strict";
 
@@ -11,10 +9,9 @@ require("../spec-setup");
 		var note, $note, $button, positionAdvice, $window;
 
 		beforeEach(function() {
-			$("body").html("");
 			$button = $("<button class='close' />");
 			$note = $("<div id='note' />").append($button);
-			positionAdvice = jasmine.createSpy("positionAdvice").andReturn({
+			positionAdvice = jasmine.createSpy("positionAdvice").and.returnValue({
 				top: 50,
 				left: 20
 			});
@@ -23,6 +20,10 @@ require("../spec-setup");
 				off: jasmine.createSpy("off")
 			};
 			note = new Note($note, positionAdvice, $window);
+		});
+
+		afterEach(function() {
+			$("#note").remove();
 		});
 
 		it("attaches", function() {
@@ -51,13 +52,13 @@ require("../spec-setup");
 		it("hooks the resize event", function() {
 			note.hook();
 			expect($window.on).toHaveBeenCalled();
-			expect($window.on.calls[0].args[0].split(".")[0]).toEqual("resize");
+			expect($window.on.calls.argsFor(0)[0].split(".")[0]).toEqual("resize");
 		});
 
 		it("unhooks the resize event", function() {
 			note.unhook();
 			expect($window.off).toHaveBeenCalled();
-			expect($window.off.calls[0].args[0].split(".")[0]).toEqual("resize");
+			expect($window.off.calls.argsFor(0)[0].split(".")[0]).toEqual("resize");
 		});
 
 		it("activates", function() {
@@ -73,7 +74,7 @@ require("../spec-setup");
 		});
 
 		it("positions upon activation", function() {
-			spyOn(note, "positionAt").andCallThrough();
+			spyOn(note, "positionAt").and.callThrough();
 			note.activate();
 			expect(note.positionAt).toHaveBeenCalledWith({ left: 20, top: 50});
 		});

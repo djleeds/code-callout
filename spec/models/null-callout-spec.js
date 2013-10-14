@@ -1,5 +1,3 @@
-require("../spec-setup");
-
 (function($, undefined) {
 	"use strict";
 
@@ -8,6 +6,9 @@ require("../spec-setup");
 
 	describe("NullCallout", function() {
 		var callout = new NullCallout();
-		expect(callout.deactivate).toBeDefined();
+
+		it("should have a deactivate member", function() {
+			expect(callout.deactivate).toBeDefined();
+		});
 	});
 })(jQuery);

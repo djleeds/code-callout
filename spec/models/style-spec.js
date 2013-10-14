@@ -1,5 +1,3 @@
-require("../spec-setup");
-
 (function($, undefined) {
 	"use strict";
 
@@ -19,7 +17,12 @@ require("../spec-setup");
 
 	describe("Style", function() {
 
+		afterEach(function() {
+			$("style#" + styleId).remove();
+		});
+
 		describe("#hasBeenWritten", function() {
+
 			it("is false for an empty document", function() {
 				expect(style.hasBeenWritten()).toBeFalsy();
 			});
@@ -28,29 +31,30 @@ require("../spec-setup");
 				$("<style>").attr("id", styleId).appendTo("body");
 				expect(style.hasBeenWritten()).toBeTruthy();
 			});
+
 		});
 
 		describe("#build", function() {
+
 			it("creates CSS using the specified styles hash", function() {
 				var actual = style.build();
 				expect(actual.trim()).toEqual(expectedCSS);
 			});
+
 		});
 
 		describe("#write", function() {
+
 			it("writes the CSS into a style tag with the specified styleId", function() {
 				style.write();
 				var $styleElement = $("style#" + styleId);
 				expect($styleElement).toExist();
 				expect($styleElement.text().trim()).toEqual(expectedCSS);
 			});
+
 		});
 
 		describe("#initialize", function() {
-
-			beforeEach(function() {
-				$("body").html("");
-			});
 
 			it("writes the style when it hasn't yet been written", function() {
 				spyOn(style, "write");
@@ -64,6 +68,7 @@ require("../spec-setup");
 				style.initialize();
 				expect(style.write).not.toHaveBeenCalled();
 			});
+
 		});
 
 	});

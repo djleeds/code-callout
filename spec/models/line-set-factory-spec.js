@@ -1,18 +1,14 @@
-require("../spec-setup");
-
 (function($, undefined){
 	"use strict";
 
 	initializePlugin();
 	var LineSetFactory = getClass("LineSetFactory");
 
-	var html = getHtmlFromFile("simple-fixture.html");
-
 	var lineNumbers = "1,3,5-7";
 	var lineNumbersArray = [ 1, 3, 5, 6, 7 ];
 
 	var lineNumberParser = {
-		parse: jasmine.createSpy("lineNumberParser").andReturn(lineNumbersArray)
+		parse: jasmine.createSpy("lineNumberParser").and.returnValue(lineNumbersArray)
 	};
 	var lineSelector = function(fileIdentifier, lineNumber) {
 		return "#" + fileIdentifier + " #line-" + lineNumber;
@@ -27,13 +23,15 @@ require("../spec-setup");
 		return $result;
 	}
 
+	beforeEach(function() {
+		loadFixtures("simple-fixture.html");
+	});
+
 	describe("LineSetFactory", function() {
 
 		it("creates a line set", function() {
-			setFixtures(html);
-
 			var factory = new LineSetFactory(lineNumberParser, lineSelector, highlightClass);
-			spyOn(factory, "selectLines").andCallFake(getLines);
+			spyOn(factory, "selectLines").and.callFake(getLines);
 
 			var lineSet = factory.create("source-code", lineNumbers);
 			expect(lineNumberParser.parse).toHaveBeenCalled();
@@ -47,8 +45,6 @@ require("../spec-setup");
 		});
 
 		it("selects the appropriate DOM elements", function() {
-			setFixtures(html);
-
 			var factory = new LineSetFactory(lineNumberParser, lineSelector, highlightClass);
 			var $lines = factory.selectLines("source-code", lineNumbersArray);
 

@@ -3,12 +3,17 @@
 **Code Callout** is a [jQuery](http://jquery.com) plugin that allows you to create links
 in your webpages to highlight and comment on a block of code in the page.  When you click a link, the page scrolls to the indicated lines, highlights them, and pops up a note.  When you're done examining the code, you click the "continue reading" button, and you'll scroll back to the text.
 
-Right now, it works with embedded [Gists](https://gist.github.com), although you might be
-able to get it to work with other types of code listings with some configuration changes.
+Right now, it works with the following syntax highlighters:
+
+* `pre` (default) - This works with a variety of syntax highlighters that operate on a plain ol' `<pre>` block, like Google's [Prettify](http://code.google.com/p/google-code-prettify/)
+* `gist` - Works on embedded [Github Gists](https://gist.github.com/)
+* `jquery-syntax` - For use with [jQuery.Syntax](http://www.codeotaku.com/projects/jquery-syntax/index.en)
+* `prism` - For use with [Prism](http://prismjs.com/)
+* `syntaxhighlighter` - For use with [SyntaxHighlighter](http://alexgorbatchev.com/SyntaxHighlighter) version 3
 
 ## How It Works
 
-1. **Embed your code listing** into your web page (e.g., using the *Embed this gist* code)
+1. **Add your code listing** to your web page
 2. **Wrap the code listing** with a tag that has an id attribute
 3. **Add some text** about the code listing somewhere on your page
 4. **Make a link** around some of your text, adding data attributes to indicate which lines from which listing you want to highlight, as well as a comment for a popup.
@@ -16,7 +21,7 @@ able to get it to work with other types of code listings with some configuration
 
 ## Quick Example
 
-Here's a snippet of HTML demonstrating how you can create a callout.  Naturally, this assumes you've already loaded in both jQuery and the Code Callout plugin.
+Here's a snippet of HTML demonstrating how you can create a callout using Github gists.  Naturally, this assumes you've already loaded in both jQuery and the Code Callout plugin.
 
 ```html
 <!-- Notice the Gist script is wrapped with a div tag that we can target by id. -->
@@ -38,7 +43,7 @@ Here's a snippet of HTML demonstrating how you can create a callout.  Naturally,
 
 <!-- Here's where we tell the plugin to create callouts for the trigger links, which we hooked by class name. -->
 <script>
-    $(".callout-trigger").codeCallout();
+    $(".callout-trigger").codeCallout({ profile: "gist" });
 </script>
 ```
 
@@ -86,4 +91,4 @@ $(".callout-trigger").codeCallout({
 
 ## Issues
 
-If you find a bug, feel free to report it in the [Issue Tracker](https://github.com/djleeds/code-callout/issues).  Or if you're feeling ambitious, fork the repo, fix it up and send a pull request. Be sure to add a Jasmine example for any pull request you make.
+If you find a bug, feel free to report it in the [Issue Tracker](https://github.com/djleeds/code-callout/issues).  Or fork the repo, fix it up and send a pull request. Be sure to add a Jasmine example for any pull request you make.
