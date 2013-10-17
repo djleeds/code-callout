@@ -10,7 +10,8 @@ module.exports = function(grunt) {
 			]
 		},
 		jasmine_node: {
-			verbose: false
+			verbose: false,
+			forceExit: true
 		},
 		uglify: {
 			options: {

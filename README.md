@@ -1,4 +1,4 @@
-# Code Callout
+# Code Callout [![Build Status](https://travis-ci.org/djleeds/code-callout.png)](https://travis-ci.org/djleeds/code-callout)
 
 **Code Callout** is a [jQuery](http://jquery.com) plugin that allows you to create links
 in your webpages to highlight and comment on a block of code in the page.  When you click a link, the page scrolls to the indicated lines, highlights them, and pops up a note.  When you're done examining the code, you click the "continue reading" button, and you'll scroll back to the text.
