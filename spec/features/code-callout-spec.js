@@ -32,7 +32,7 @@ require("../spec-setup");
 
 		describe("when initialized", function() {
 			it("resets the href attribute on all triggers", function() {
-				expect($("a.code-callout").attr("href")).toEqual("#");
+				expect($("a.code-callout")).toHaveAttr("href", "#");
 			});
 		});
 
@@ -63,7 +63,7 @@ require("../spec-setup");
 
 				it("has the expected content", function() {
 					var expectedContent = $("#line-1-trigger").data("note");
-					expect($("#code-callout-note .content").text()).toEqual(expectedContent);
+					expect($("#code-callout-note .content")).toHaveText(expectedContent);
 				});
 
 				describe("close button", function() {
@@ -73,7 +73,7 @@ require("../spec-setup");
 					});
 
 					it("has the expected label", function() {
-						expect($("#code-callout-note button").text()).toEqual("Continue reading");
+						expect($("#code-callout-note button")).toHaveText("Continue reading");
 					});
 
 					describe("when clicked", function() {

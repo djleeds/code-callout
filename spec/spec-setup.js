@@ -1,8 +1,13 @@
 jsdom = require("jsdom").jsdom();
 window = jsdom.createWindow();
+document = window.document;
+
 jQuery = require("jquery");
 
+window.jasmine = jasmine;
 require("jasmine-jquery");
+
+setFixtures = window.setFixtures;
 
 var targetCode = typeof process.env.TARGET_CODE_FILE !== "undefined" ?
 	process.env.TARGET_CODE_FILE :

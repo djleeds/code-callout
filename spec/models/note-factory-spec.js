@@ -21,20 +21,20 @@ require("../spec-setup");
 		it("renders contents", function() {
 			var $content = factory.renderContent(noteText);
 			expect($content).toBe("div." + contentClass);
-			expect($content.text()).toEqual(noteText);
+			expect($content).toHaveText(noteText);
 		});
 
 		it("renders a close button", function() {
 			var $button = factory.renderCloseButton();
 			expect($button).toBe("button." + buttonClass);
-			expect($button.text()).toEqual(buttonText);
+			expect($button).toHaveText(buttonText);
 		});
 
 		it("renders a note", function() {
 			var $note = factory.render(noteText);
 			expect($note).toBe("div#" + noteId);
-			expect($note.text()).toMatch(noteText);
-			expect($note.text()).toMatch(buttonText);
+			expect($note).toContainText(noteText);
+			expect($note).toContainText(buttonText);
 		});
 
 		it("creates a note", function() {
@@ -44,8 +44,8 @@ require("../spec-setup");
 
 			var $note = $("body #" + noteId);
 			expect($note).toExist();
-			expect($note.text()).toMatch(noteText);
-			expect($note.text()).toMatch(buttonText);
+			expect($note).toContainText(noteText);
+			expect($note).toContainText(buttonText);
 		});
 
 	});
